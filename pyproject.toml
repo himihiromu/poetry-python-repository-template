@@ -1,0 +1,107 @@
+[tool.poetry]
+name = "poetry-python-repository-template"
+version = "0.1.0"
+description = "個人的なpoetryとtox辺りを使うためのテンプレリポジトリ"
+authors = ["himihiromu <himihiromu@icloud.com>"]
+readme = "README.md"
+packages = [
+    { include = "src" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+
+[tool.poetry.group.dev.dependencies]
+tox-uv = "^1.8.2"
+ruff = "^0.4.5"
+mypy = "^1.10.0"
+pytest = "^8.2.1"
+coverage = "^7.5.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+    "nginx"
+]
+include = ["pyproject.toml", "flask/**/*.py"]
+
+# Same as Black.
+line-length = 120
+indent-width = 4
+
+# Assume Python 3.12
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    # missing-type-self self
+    "ANN101",
+    # undocumented-public-module
+    "D100",
+    # one-blank-line-before-class
+    "D203",
+    # multi-line-summary-second-line
+    "D213",
+    # ends-in-period
+    "D400",
+    # ends-in-punctuation
+    "D415",
+    # shebang-missing-executable-file
+    "EXE002",
+    # implicit-namespace-package
+    "INP001",
+    # assert
+    "S101",
+    # hardcoded-bind-all-interfaces
+    "S104",
+    # single-line-implicit-string-concatenation
+    "ISC001",
+    # magic-value-comparison
+    "PLR2004",
+]
+
+# Allow fix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+unfixable = []
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.format]
+# Like Black, use double quotes for strings.
+quote-style = "double"
+
+# Like Black, indent with spaces, rather than tabs.
+indent-style = "space"
+
+# Like Black, respect magic trailing commas.
+skip-magic-trailing-comma = true
+
+# Like Black, automatically detect the appropriate line ending.
+line-ending = "auto"

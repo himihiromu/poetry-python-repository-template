@@ -1,0 +1,5 @@
+services:
+  flask:
+    volumes:
+      - ./:/web/
+    command: ["poetry", "run", "tox"]
